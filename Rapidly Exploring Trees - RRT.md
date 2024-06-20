@@ -15,3 +15,4 @@ A sampling-based algortihm is an algorithm in which radnom nodes will be generat
 ## Incremental RRT:
    Incremental RRT improves upon the basic RRT algorithm by allowing for the addition of new nodes and edges to the existing tree. This means that instead of starting from scratch for each planning request, the algorithm can reuse parts of the existing tree that are still relevant.
    
+A. Choudhary, ‘Sampling-based Path Planning Algorithms: A Survey’, arXiv [cs.RO]. 2023
