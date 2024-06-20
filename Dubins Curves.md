@@ -17,7 +17,7 @@ Turn right, turn left, and then turn right again.
 ### LRL:
 Turn left, turn right, and then turn left again.
     
-The picture will illustrate Dubins' curves.  
+### The image below will illustrate Dubins' curves.  
 ![dubins paths](https://github.com/ahmaddaoud2003/IncrementalRRT-with-Dubins/assets/145913339/7268aa69-e323-4a91-b9d4-f5da8be37805)
 
 S. Manyam, D. Casbeer, A. Von Moll, and Z. Fuchs, ‘Shortest Dubins path to a circle’, 01 2019.
