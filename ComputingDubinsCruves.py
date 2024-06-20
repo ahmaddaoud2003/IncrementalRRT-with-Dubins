@@ -35,11 +35,11 @@ def returnDubinsPath(x1, y1, psi1, x2, y2, psi2, R):
     
     #Check the distance between circle centers to determine trajectory type
     if distance(xc1, xc2, yc1, yc2) >= 3*R:
-        xtrajectory, ytrajectory, pathDistance = computeCCCTrajectory(x1, x2, xc1, xc2, y1, y2, yc1, yc2, psi1, psi2, R, turnType, sigma1, sigma2)
+        xtrajectory, ytrajectory, pathDistance = computeCSCTrajectory(x1, x2, xc1, xc2, y1, y2, yc1, yc2, psi1, psi2, R, turnType, sigma1, sigma2)
     elif distance(xc1, xc2, yc1, yc2) < 3*R and distance(xc1, xc2, yc1, yc2) >= 2*R:
         sigma1, sigma2, turn, proceed = findCCCTurnType(turnType)
         if proceed: 
-            xtrajectory, ytrajectory, pathDistance = computeCSCTrajectory(x1, x2, xc1, xc2, y1, y2, yc1, yc2, R, sigma1, sigma2)
+            xtrajectory, ytrajectory, pathDistance = computeCCCTrajectory(x1, x2, xc1, xc2, y1, y2, yc1, yc2, R, sigma1, sigma2)
         else:
             xtrajectory = None 
             ytrajectory = None
@@ -222,11 +222,9 @@ def computeCCCTrajectory(x1, x2, xc1, xc2, y1, y2, yc1, yc2, R, sigma1, sigma2):
     
     # Turn towards the middle circle
     while distance(xtrajectory[-1], xci, ytrajectory[-1], yci) > 3:
-        #TODO: update Mci using sigma2 in opposite direction (0.1 rad intervals), vec2 (vector from <xc3, yc3> to latest point of xy_trajectory), and xnew, ynew
         Mci = np.array([[cos(0.1), sigma2*sin(0.1)],[-sigma2*sin(0.1),cos(0.1)]])
         vec2 = np.array([[xtrajectory[-1] - xc3[0]],[ytrajectory[-1] - yc3[0]]])
         [xnew, ynew] = Mci @ vec2 + np.array([[xc3[0]],[yc3[0]]])
-        #TODO: append xnew, ynew to xy_trajectory, add 0.1*R to path distance
         xtrajectory.append(xnew[0])
         ytrajectory.append(ynew[0])  
         pathDistance = pathDistance + R * (0.1)
