@@ -5,5 +5,10 @@ In this repository, you will find an implementation of how to calculate a Dubins
 
 Having an implementation of how to calcultae Dubins path is not necessary since there is a Dubins library which specifically computes the Dubins Shortest path.
 
-This is how the Incremental RRT would like and how its Trajectory would look like
-![Incremental RRT ++ Dubins](https://github.com/ahmaddaoud2003/IncrementalRRT-with-Dubins/assets/145913339/d695d66d-a614-4cc3-8da8-106e6bdde008)![Trajectory Incremental RRT](https://github.com/ahmaddaoud2003/IncrementalRRT-with-Dubins/assets/145913339/6ca03680-26a7-426c-81bf-2cfc191030d0)
+
+
+## How the algorithm works
+https://github.com/user-attachments/assets/eb9c2160-6ed1-470f-b3a1-54e0bf9936c3
+
+## Final Trajectory
+![final_trajectory](https://github.com/user-attachments/assets/0245f9f5-0786-480f-9c7c-b28cd91a250e)
