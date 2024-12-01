@@ -8,7 +8,7 @@ Having an implementation of how to calcultae Dubins path is not necessary since 
 
 
 ## How the algorithm works
-https://github.com/user-attachments/assets/eb9c2160-6ed1-470f-b3a1-54e0bf9936c3
+![algorithm](https://github.com/user-attachments/assets/c1e9f0d2-0c18-47d5-8e85-0b58488ca697)
 
 ## Final Trajectory
 ![final_trajectory](https://github.com/user-attachments/assets/0245f9f5-0786-480f-9c7c-b28cd91a250e)
