@@ -25,8 +25,8 @@ class IncrementalRRT():
         self.turnRadius = turnRadius                                #Dubins path turn radius
         self.nearestNode = None                                     #nearest node            
         self.iterations = min(numIterations, 200)                   #number of iterations to run
-        self.grid = grid                                            #the map
-        self.rho = 5*self.turnRadius                                #length of each branch 
+        self.grid = grid                                            #the map (occipancy map)
+        self.rho = 5*self.turnRadius                                #length of each branch (step size for tree expansion)
         self.path_distance = 0                                      #total path distance  
         self.nearestDist = 10000                                    #distance to nearest node (initialize with large)
         self.numWaypoints = 0                                       #number of waypoints
@@ -57,7 +57,8 @@ class IncrementalRRT():
 
     def sampleNewPoint(self, x, y, psi):
         """
-        Sample a new point around current location
+        Generate random points around current location
+        Random distance and random heading points
         """
         r0 = 200*np.random.random()  # random distance
         seq = [-1,1]
@@ -71,9 +72,10 @@ class IncrementalRRT():
     def steerToPoint(self, locationStart, locationEnd):
         """
         Steers towards a new point from the nearest node, while ensuring the point is within the grid boundaries
+        Offset is how far and in what direction to place the next tree node (Help us move incrementally to the target)
         """
-        offset = self.rho*self.unitVector(locationStart, locationEnd) #calculate the offset based on the unit vector and branch length
-        point = np.array([locationStart.locationX + offset[0], locationStart.locationY + offset[1]]) #new point position
+        offset = self.rho*self.unitVector(locationStart, locationEnd) 
+        point = np.array([locationStart.locationX + offset[0], locationStart.locationY + offset[1]]) 
         # Ensure the new point is within grid boundaries
         if point[0] >= self.grid.shape[1]:
             point[0] = self.grid.shape[1] - 1
@@ -175,7 +177,7 @@ class IncrementalRRT():
 
     def retracePath(self):
         """
-        Retracing the path from the goal to root, updating the path distance, waypoints and trejectory.
+        Retracing the path from the goal to root, updating the path distance, waypoints and trajectory.
         """
         self.path_distance = 0
         self.numWaypoints = 0
@@ -193,4 +195,5 @@ class IncrementalRRT():
                 self.yTrajectory.insert(0, goal.yTP[i])
             self.path_distance += goal.parentDistance
             goal = goal.parent
+
         self.goalCosts.append(self.path_distance)
