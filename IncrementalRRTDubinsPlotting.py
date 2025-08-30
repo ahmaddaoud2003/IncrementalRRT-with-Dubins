@@ -49,7 +49,7 @@ for i in range(8):
         point = rrt.sampleNewPoint(X, Y, psi)
         rrt.findNearest(rrt.randomTree, point)
         new = rrt.steerToPoint(rrt.nearestNode, point)
-        heading = atan2(goal[1] - new[1], goal[0] - new[0]) + random.uniform(-1, 1)
+        heading = atan2(goal[1] - new[1], goal[0] - new[0]) 
 
         #Checking if new point falls in an obstacle
         if not rrt.obstaclePresent(rrt.nearestNode, new):
